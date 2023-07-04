@@ -1,0 +1,11 @@
+name: HotSpring
+version: '${version}'
+main: net.toiletmc.hotspring.HotSpring
+api-version: 1.19
+authors: [ TheLitle_Yang ]
+website: https://toiletmc.net
+commands:
+  hotspring:
+    aliases: hs
+    permission: hotspring.command.admin
+permissions: { }

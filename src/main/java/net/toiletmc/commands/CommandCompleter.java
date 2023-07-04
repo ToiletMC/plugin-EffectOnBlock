@@ -13,8 +13,9 @@ import java.util.List;
 
 public class CommandCompleter implements TabCompleter {
 
+
     @Override
-    public @Nullable List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String[] args) {
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         final String[] COMMANDS = {"debug", "reload"};
 
         List<String> list = new ArrayList<>();

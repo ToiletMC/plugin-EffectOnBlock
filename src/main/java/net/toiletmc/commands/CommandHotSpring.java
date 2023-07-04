@@ -37,6 +37,8 @@ public class CommandHotSpring implements CommandExecutor {
                 }
                 default -> sender.sendMessage(ChatColor.RED + "未知的指令");
             }
+        } else {
+            sender.sendMessage(ChatColor.RED + "未知的指令");
         }
 
         return true;

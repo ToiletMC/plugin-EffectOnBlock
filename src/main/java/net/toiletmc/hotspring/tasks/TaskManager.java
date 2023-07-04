@@ -1,12 +1,21 @@
 package net.toiletmc.hotspring.tasks;
 
 
-import java.util.Timer;
+import net.toiletmc.hotspring.HotSpring;
+import org.bukkit.scheduler.BukkitTask;
+
 
 public class TaskManager {
-    public TaskManager() {
-        Timer t = new Timer();
-        ExpTask task = new ExpTask();
-        t.schedule(task, 100L, 100L);
+    private BukkitTask task;
+    private final HotSpring plugin;
+
+    public TaskManager(HotSpring plugin) {
+        this.plugin = plugin;
+        task = new InWaterTask().runTaskTimer(plugin, 20L, 2L);
+    }
+
+    public void resetTask() {
+        task.cancel();
+        task = new InWaterTask().runTaskTimer(plugin, 20L, 2L);
     }
 }

@@ -8,15 +8,15 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class HotSpring extends JavaPlugin {
+    private TaskManager taskManager;
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+        this.taskManager = new TaskManager(this);
+        reloadPluginConfig();
         getCommand("hotspring").setExecutor(new CommandHotSpring(this));
         getCommand("hotspring").setTabCompleter(new CommandCompleter());
-
-        saveDefaultConfig();
-        reloadPluginConfig();
-        new TaskManager();
     }
 
     @Override
@@ -26,6 +26,7 @@ public final class HotSpring extends JavaPlugin {
 
     public void reloadPluginConfig() {
         this.reloadConfig();
+        this.taskManager.resetTask();
         FileConfiguration config = getConfig();
         Config.x1 = config.getDouble("location.x1");
         Config.y1 = config.getDouble("location.y1");

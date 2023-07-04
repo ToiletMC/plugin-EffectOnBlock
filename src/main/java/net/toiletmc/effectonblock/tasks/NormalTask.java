@@ -1,6 +1,6 @@
-package net.toiletmc.hotspring.tasks;
+package net.toiletmc.effectonblock.tasks;
 
-import net.toiletmc.hotspring.config.Config;
+import net.toiletmc.effectonblock.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class InWaterTask extends BukkitRunnable {
+public class NormalTask extends BukkitRunnable {
     private final Set<PotionEffectType> negativeEffects = Set.of(
             PotionEffectType.BLINDNESS,
             PotionEffectType.CONFUSION,
@@ -45,7 +45,7 @@ public class InWaterTask extends BukkitRunnable {
                 .map(PotionEffect::getType)
                 .collect(Collectors.toUnmodifiableSet());
         if (!effectTypes.contains(PotionEffectType.REGENERATION)) {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 200, 1, true));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 60, 1, true));
         } else {
             Optional<PotionEffect> effectOptional = player.getActivePotionEffects()
                     .stream()
@@ -54,9 +54,9 @@ public class InWaterTask extends BukkitRunnable {
             if (effectOptional.isPresent()) {
                 PotionEffect effect = effectOptional.get();
                 int remainingDuration = effect.getDuration();
-                if (remainingDuration < 30) {
+                if (remainingDuration < 10) {
                     player.removePotionEffect(PotionEffectType.REGENERATION);
-                    player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 200, 1, true));
+                    player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 60, 1, true));
                 }
             }
         }

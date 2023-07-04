@@ -1,13 +1,13 @@
-package net.toiletmc.hotspring;
+package net.toiletmc.effectonblock;
 
 import net.toiletmc.commands.CommandCompleter;
-import net.toiletmc.commands.CommandHotSpring;
-import net.toiletmc.hotspring.config.Config;
-import net.toiletmc.hotspring.tasks.TaskManager;
+import net.toiletmc.commands.Command;
+import net.toiletmc.effectonblock.config.Config;
+import net.toiletmc.effectonblock.tasks.TaskManager;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class HotSpring extends JavaPlugin {
+public final class EffectOnBlock extends JavaPlugin {
     private TaskManager taskManager;
 
     @Override
@@ -15,7 +15,7 @@ public final class HotSpring extends JavaPlugin {
         saveDefaultConfig();
         this.taskManager = new TaskManager(this);
         reloadPluginConfig();
-        getCommand("hotspring").setExecutor(new CommandHotSpring(this));
+        getCommand("hotspring").setExecutor(new Command(this));
         getCommand("hotspring").setTabCompleter(new CommandCompleter());
     }
 
@@ -26,7 +26,6 @@ public final class HotSpring extends JavaPlugin {
 
     public void reloadPluginConfig() {
         this.reloadConfig();
-        this.taskManager.resetTask();
         FileConfiguration config = getConfig();
         Config.x1 = config.getDouble("location.x1");
         Config.y1 = config.getDouble("location.y1");

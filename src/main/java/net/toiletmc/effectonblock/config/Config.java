@@ -1,4 +1,4 @@
-package net.toiletmc.hotspring.config;
+package net.toiletmc.effectonblock.config;
 
 
 public class Config {

@@ -1,11 +1,11 @@
-name: HotSpring
+name: EffectOnBlock
 version: '${version}'
-main: net.toiletmc.hotspring.HotSpring
+main: net.toiletmc.effectonblock.EffectOnBlock
 api-version: 1.19
 authors: [ TheLitle_Yang ]
 website: https://toiletmc.net
 commands:
   hotspring:
-    aliases: hs
-    permission: hotspring.command.admin
+    aliases: eob
+    permission: effectonblock.command.admin
 permissions: { }

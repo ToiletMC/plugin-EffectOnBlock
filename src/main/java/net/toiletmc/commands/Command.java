@@ -1,22 +1,21 @@
 package net.toiletmc.commands;
 
-import net.toiletmc.hotspring.HotSpring;
-import net.toiletmc.hotspring.config.Config;
+import net.toiletmc.effectonblock.EffectOnBlock;
+import net.toiletmc.effectonblock.config.Config;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-public class CommandHotSpring implements CommandExecutor {
-    private final HotSpring plugin;
+public class Command implements CommandExecutor {
+    private final EffectOnBlock plugin;
 
-    public CommandHotSpring(HotSpring plugin) {
+    public Command(EffectOnBlock plugin) {
         this.plugin = plugin;
     }
 
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 
         if (!sender.hasPermission("hotspring.command.admin")) {
             sender.sendMessage(ChatColor.RED + "未知的指令");

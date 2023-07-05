@@ -1,12 +1,10 @@
-package net.toiletmc.commands;
+package net.toiletmc.effectonblock.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

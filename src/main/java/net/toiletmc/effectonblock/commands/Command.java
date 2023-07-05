@@ -1,8 +1,8 @@
-package net.toiletmc.commands;
+package net.toiletmc.effectonblock.commands;
 
 import net.toiletmc.effectonblock.EffectOnBlock;
 import net.toiletmc.effectonblock.config.Config;
-import org.bukkit.ChatColor;
+import net.toiletmc.effectonblock.config.Debug;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
@@ -17,8 +17,8 @@ public class Command implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, org.bukkit.command.Command command, String label, String[] args) {
 
-        if (!sender.hasPermission("hotspring.command.admin")) {
-            sender.sendMessage(ChatColor.RED + "未知的指令");
+        if (!sender.hasPermission("effectonblock.command.admin")) {
+            sender.sendMessage(Config.unknownCommand);
             return true;
         }
 
@@ -26,18 +26,17 @@ public class Command implements CommandExecutor {
             switch (args[0].toLowerCase()) {
                 case "reload" -> {
                     plugin.reloadPluginConfig();
-                    sender.sendMessage("HotSpring 重载成功！");
+                    sender.sendMessage(Config.successfulReload);
+                    sender.sendMessage("Total Areas: " + EffectOnBlock.areas.size());
                 }
                 case "debug" -> {
-                    sender.sendMessage("x1: " + Config.x1 + ",y1: " + Config.y1 + ",z1: " + Config.x1);
-                    sender.sendMessage("x2: " + Config.x2 + ",y2: " + Config.y2 + ",z2: " + Config.x2);
-                    sender.sendMessage("当前温泉玩家数量：" + Config.playercount);
-                    sender.sendMessage("单次给予经验点数：" + Config.exp_points);
+                    sender.sendMessage("Total Players: " + Debug.playercount);
+                    sender.sendMessage("Total Areas: " + EffectOnBlock.areas.size());
                 }
-                default -> sender.sendMessage(ChatColor.RED + "未知的指令");
+                default -> sender.sendMessage(Config.unknownCommand);
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "未知的指令");
+            sender.sendMessage(Config.unknownCommand);
         }
 
         return true;

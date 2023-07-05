@@ -2,10 +2,10 @@ name: EffectOnBlock
 version: '${version}'
 main: net.toiletmc.effectonblock.EffectOnBlock
 api-version: 1.19
-authors: [ TheLitle_Yang ]
+authors: [ TheLittle_Yang ]
 website: https://toiletmc.net
 commands:
-  hotspring:
+  effectonblock:
     aliases: eob
     permission: effectonblock.command.admin
 permissions: { }

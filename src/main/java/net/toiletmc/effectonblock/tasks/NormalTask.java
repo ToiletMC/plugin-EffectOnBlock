@@ -16,7 +16,7 @@ public class NormalTask extends BukkitRunnable {
             for (Area area : EffectOnBlock.areas) {
                 if (area.isInArea(player.getLocation())) {
                     if (area.isInWater() && !player.isInWater()) {
-                        return;
+                        continue;
                     }
 
                     player.giveExp(area.getExp());
